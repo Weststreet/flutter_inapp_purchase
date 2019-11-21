@@ -47,6 +47,7 @@ class _InAppState extends State<InApp> {
   void initState() {
     super.initState();
     initPlatformState();
+    FlutterInappPurchase.instance.initObserver();
   }
 
   @override

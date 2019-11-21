@@ -24,9 +24,9 @@
 @synthesize appStoreInitiatedProducts;
 @synthesize purchases;
 @synthesize channel;
-
+FlutterInappPurchasePlugin* instance;
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-    FlutterInappPurchasePlugin* instance = [[FlutterInappPurchasePlugin alloc] init];
+    instance = [[FlutterInappPurchasePlugin alloc] init];
     instance.channel = [FlutterMethodChannel
                         methodChannelWithName:@"flutter_inapp"
                         binaryMessenger:[registrar messenger]];
