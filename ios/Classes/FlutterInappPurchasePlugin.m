@@ -30,7 +30,7 @@
     instance.channel = [FlutterMethodChannel
                         methodChannelWithName:@"flutter_inapp"
                         binaryMessenger:[registrar messenger]];
-    [[SKPaymentQueue defaultQueue] addTransactionObserver:instance];
+
     [registrar addMethodCallDelegate:instance channel:instance.channel];
 }
 
@@ -56,7 +56,10 @@
         result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
     } else if ([@"canMakePayments" isEqualToString:call.method]) {
         [self canMakePayments:result];
-    } else if ([@"getItems" isEqualToString:call.method]) {
+    }else if ([@"initObserver" isEqualToString:call.method]) {
+    NSLog(@"\n\n Purchase initObserver !! \n\n");
+             [[SKPaymentQueue defaultQueue] addTransactionObserver:instance];
+         } else if ([@"getItems" isEqualToString:call.method]) {
         NSArray<NSString*>* identifiers = (NSArray<NSString*>*)call.arguments[@"skus"];
         if (identifiers != nil) {
             [self fetchProducts:identifiers result:result];

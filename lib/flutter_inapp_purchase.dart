@@ -637,4 +637,15 @@ class FlutterInappPurchase {
       _purchaseErrorController = null;
     }
   }
+
+  /// init Observer
+  Future<Null> initObserver() async {
+    if (_platform.isAndroid) {
+
+    } else if (_platform.isIOS) {
+      await _channel.invokeMethod('initObserver');
+
+    }
+  }
+
 }
